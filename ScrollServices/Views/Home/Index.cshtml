@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+@{
+    int cc = 0;
+    try
+    {
+        cc = Convert.ToInt32(ViewBag.Count);
+    }
+    catch (Exception)
+    {
+        
+      
+    }
+    
+}
+<div class="col-12">
+    <form asp-action="Index" asp-controller="Home" method="post">
+        <ul>
+            <li>                
+                <input type="submit" value=">>" class="text-danger" name="Forward" />
+                <input class="text-center" type="number" name="start" value="@cc"  style="width:100px;" />
+                <input type="submit" value="<<" class="text-danger" name="Reverse" />
+             </li>
+                
+                @Html.Hidden("count", 100)
+        </ul>
+
+    </form>
+</div>
+<div class="col-12">
+  @ViewBag.Message
+</div>
